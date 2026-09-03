@@ -1,0 +1,233 @@
+:root {
+    --f-primary: #0f172a;
+    --f-primary-soft: #e0f2fe;
+    --f-accent: #009ee2;
+    --f-accent-soft: rgba(0, 158, 226, 0.12);
+    --f-highlight: #f59e0b;
+    --f-sidebar-bg: linear-gradient(180deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.94));
+    --f-sidebar-border: rgba(148, 163, 184, 0.18);
+    --f-sidebar-text: #e2e8f0;
+    --f-sidebar-muted: #94a3b8;
+    --f-sidebar-hover: rgba(255, 255, 255, 0.05);
+    --f-sidebar-active: rgba(0, 158, 226, 0.16);
+}
+
+.fi-sidebar {
+    background: var(--f-sidebar-bg);
+    border-right: 1px solid var(--f-sidebar-border);
+    box-shadow: 0 20px 50px -30px rgba(15, 23, 42, 0.8);
+    transition: width 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.fi-sidebar-header {
+    padding: 1rem 1rem 0.75rem;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.fi-sidebar-header-logo-ctn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3rem;
+}
+
+.fi-sidebar-nav {
+    padding: 0.9rem 0.75rem 1rem;
+}
+
+.fi-sidebar-nav-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.fi-sidebar-group {
+    border: 1px solid transparent;
+    border-radius: 1rem;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.fi-sidebar-group:hover {
+    border-color: rgba(148, 163, 184, 0.12);
+}
+
+.fi-sidebar-group-button,
+.fi-sidebar-item {
+    border-radius: 0.9rem !important;
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fi-sidebar-group-button:hover,
+.fi-sidebar-item:hover {
+    transform: translateX(2px);
+    background: var(--f-sidebar-hover) !important;
+}
+
+.fi-sidebar-item {
+    min-height: 2.9rem;
+    color: var(--f-sidebar-text) !important;
+}
+
+.fi-sidebar-item-icon,
+.fi-sidebar-item-label,
+.fi-sidebar-group-button .fi-icon,
+.fi-sidebar-group-button span {
+    color: inherit !important;
+}
+
+.fi-sidebar-item-active,
+.fi-sidebar-item[aria-current='page'],
+.fi-sidebar-item[data-active='true'],
+.fi-sidebar-item-active .fi-ac,
+.fi-sidebar-group-button[aria-expanded='true'] {
+    background: linear-gradient(90deg, rgba(0, 158, 226, 0.18), rgba(0, 158, 226, 0.08)) !important;
+    box-shadow: inset 0 0 0 1px rgba(0, 158, 226, 0.18);
+    color: #f8fafc !important;
+}
+
+.fi-sidebar-group-label {
+    color: var(--f-sidebar-muted) !important;
+    font-size: 0.7rem !important;
+    letter-spacing: 0.18em !important;
+    text-transform: uppercase;
+    padding: 0.7rem 0.9rem 0.35rem;
+}
+
+.fi-sidebar-item-label {
+    font-weight: 600;
+}
+
+.fi-main-content {
+    background: linear-gradient(180deg, #f8fafc 0%, #f4f7fb 100%);
+}
+
+.fi-topbar,
+.fi-page-header {
+    border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px);
+}
+
+.fi-view-site-action {
+    display: flex;
+    flex-shrink: 0;
+}
+
+.fi-view-site-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 158, 226, 0.28);
+    border-radius: 0.65rem;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    padding: 0.45rem 0.85rem;
+    color: #0f172a;
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap;
+    box-shadow: 0 5px 16px -12px rgba(15, 23, 42, 0.7);
+    transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fi-view-site-button:hover {
+    border-color: rgba(0, 158, 226, 0.5);
+    color: var(--f-accent);
+    background: #eff8fe;
+    box-shadow: 0 10px 24px -14px rgba(0, 158, 226, 0.55);
+    transform: translateY(-1px);
+}
+
+.fi-view-site-icon {
+    width: 8px;
+    height: 8px;
+    color: var(--f-accent);
+}
+
+.fi-page-header {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.fi-card,
+.fi-section,
+.fi-form,
+.fi-table {
+    box-shadow: 0 16px 40px -30px rgba(15, 23, 42, 0.28) !important;
+    border: 1px solid rgba(148, 163, 184, 0.12) !important;
+}
+
+.fi-button {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.fi-button:hover {
+    transform: translateY(-1px);
+}
+
+.fi-login-page {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top left, rgba(0, 158, 226, 0.18), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(245, 158, 11, 0.14), transparent 30%),
+        linear-gradient(135deg, #020617 0%, #0f172a 45%, #111827 100%);
+    padding: 2rem 1rem;
+}
+
+.fi-login-page .fi-panel {
+    background: rgba(255, 255, 255, 0.96) !important;
+    border: 1px solid rgba(148, 163, 184, 0.18) !important;
+    box-shadow: 0 30px 90px -40px rgba(15, 23, 42, 0.95) !important;
+    border-radius: 1.6rem !important;
+    overflow: hidden;
+}
+
+.fi-login-page .fi-form,
+.fi-login-page .fi-section {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.fi-login-page .fi-button {
+    background: linear-gradient(135deg, #f59e0b, #f97316) !important;
+    border: none !important;
+    box-shadow: 0 16px 28px -18px rgba(249, 115, 22, 0.9) !important;
+    color: #fff !important;
+    font-weight: 700 !important;
+    border-radius: 0.9rem !important;
+}
+
+.fi-login-page .fi-button:hover {
+    filter: brightness(1.04);
+}
+
+.fi-login-page input,
+.fi-login-page textarea,
+.fi-login-page select {
+    border-radius: 0.9rem !important;
+    border-color: rgba(148, 163, 184, 0.4) !important;
+    background: #f8fafc !important;
+    color: #0f172a !important;
+}
+
+.fi-login-page input:focus,
+.fi-login-page textarea:focus,
+.fi-login-page select:focus {
+    border-color: rgba(0, 158, 226, 0.8) !important;
+    box-shadow: 0 0 0 3px rgba(0, 158, 226, 0.12) !important;
+}
+
+@media (max-width: 1023px) {
+    .fi-sidebar {
+        backdrop-filter: blur(14px);
+    }
+
+    .fi-sidebar-nav {
+        padding-top: 0.75rem;
+    }
+
+    .fi-view-site-button {
+        padding: 0.4rem 0.65rem;
+        font-size: 0.7rem;
+    }
+}
