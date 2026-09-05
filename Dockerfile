@@ -77,8 +77,6 @@ COPY --from=frontend /app/public/build ./public/build
 
 # Créer les répertoires nécessaires à Laravel
 
-# AVANT composer install
-
 # ==========================================
 
 RUN mkdir -p 
