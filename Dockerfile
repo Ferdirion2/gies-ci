@@ -1,3 +1,4 @@
+```dockerfile
 # ==========================================
 # ÉTAPE 1 : Construction du frontend Vite
 # ==========================================
@@ -20,7 +21,11 @@ FROM php:8.2-cli
 
 WORKDIR /var/www/html
 
-# Extensions système nécessaires à Filament, Spatie Permission, et l'import/export (openspout)
+
+# ==========================================
+# Extensions système nécessaires à Laravel,
+# Filament, Spatie Permission et OpenSpout
+# ==========================================
 RUN apt-get update && apt-get install -y \
     git \
     unzip \
@@ -39,32 +44,69 @@ RUN apt-get update && apt-get install -y \
     gd \
     && rm -rf /var/lib/apt/lists/*
 
+
+# ==========================================
+# Installation de Composer
+# ==========================================
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# On copie TOUT le projet AVANT composer install,
-# pour que "artisan" existe déjà quand les scripts post-autoload-dump s'exécutent
+
+# ==========================================
+# Copier tout le projet Laravel
+# ==========================================
 COPY . .
 
-# Récupère les assets déjà compilés par Vite (étape 1)
+
+# ==========================================
+# Récupérer les assets compilés par Vite
+# ==========================================
 COPY --from=frontend /app/public/build ./public/build
 
+
+# ==========================================
+# Créer les répertoires nécessaires à Laravel
+# AVANT composer install
+# ==========================================
+RUN mkdir -p \
+    storage/framework/cache/data \
+    storage/framework/sessions \
+    storage/framework/views \
+    storage/logs \
+    bootstrap/cache
+
+
+# ==========================================
+# Installer les dépendances PHP
+# ==========================================
 RUN composer install \
     --no-dev \
     --no-interaction \
     --prefer-dist \
     --optimize-autoloader
 
-RUN mkdir -p \
-    storage/framework/cache \
-    storage/framework/sessions \
-    storage/framework/views \
-    bootstrap/cache
 
+# ==========================================
+# Permissions Laravel
+# ==========================================
 RUN chmod -R 775 storage bootstrap/cache
 
+
+# ==========================================
+# Entrypoint
+# ==========================================
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
+
+# ==========================================
+# Port Render
+# ==========================================
 EXPOSE 10000
 
+
+# ==========================================
+# Démarrage de l'application
+# ==========================================
 ENTRYPOINT ["docker-entrypoint.sh"]
+```
